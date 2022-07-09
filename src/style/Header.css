@@ -1,0 +1,37 @@
+#HeaderDiv {
+  display: flex;
+  margin: 1% auto;
+  border-bottom: 1px solid black;
+  border-radius: 10px;
+  width: 100%;
+}
+#searchBar {
+  border-radius: 10px;
+  position: relative;
+  left: 10vh;
+  height: 5vh;
+  top: 5vh;
+  width: 50%;
+}
+#loginSignup {
+  position: relative;
+  left: 15%;
+  top: 5vh;
+}
+#loginSignup a {
+  color: black;
+  text-decoration: none;
+}
+#loginSignup a:hover {
+  color: red;
+  text-decoration: underline;
+}
+#searchBtn {
+  background-color: #504ea7;
+  width: 15%;
+  height: 40px;
+  position: relative;
+  left: 12vh;
+  top: 5vh;
+  text-align: center;
+}
