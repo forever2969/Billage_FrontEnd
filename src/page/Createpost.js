@@ -6,6 +6,7 @@ const Createpost = () => {
     const titleInput = useRef();
     const priceInput = useRef();
     const contentsInput = useRef();
+    const [detailImgs,setDetailImgs] = useState('');
 
     const [crePost,setCrePost] = useState({
         photo:"",
@@ -49,16 +50,45 @@ const Createpost = () => {
             return;
         }
     }
-
+    const handleImageUpload = (e) => {
+        const fileArr = e.target.files;
+    
+        let fileURLs = [];
+       
+        let file;
+        let filesLength = fileArr.length > 3 ? 3 : fileArr.length;
+    
+        for (let i = 0; i < filesLength; i++) {
+          file = fileArr[i];
+        
+          let reader = new FileReader();
+          reader.onload = () => {
+            //console.log(reader.result);
+            fileURLs[i] = reader.result;
+            setDetailImgs([...fileURLs]);
+          };
+          reader.readAsDataURL(file);
+        }
+      };
     return(
         <div className="createpost">
             <h2>게시글 작성</h2>
             
             {/* 사진 입력 */}
-            <div>
-                <input useref={crePost.photo} placeholder="사진 올리기"/>
+            <div style={{display:"flex", justifyContent:"center",marginLeft:"20%"}}>
+                <label style={{fontWeight:"600",marginTop:"1%"}}>사진을 올리세요 (최대 3장)</label>
+                <input type='file' multiple accept="image/jpg,image/png,image/jpeg" onChange={handleImageUpload} useref={crePost.photo}/>
+                
             </div>
-
+            {/*업로드 이미지 미리보기*/}
+            {(detailImgs.length === 0)?'':(
+            <div className="previewImgs">
+                {
+                    detailImgs.map((url)=>
+                        <img src={url} style={{width:"33.3%",height:"150px",border:"1px solid red"}} alt="사진미리보기" />
+                    )
+                }
+            </div>)}
             {/* 제목 입력 */}
             <div>
                 <input name='title' useref={crePost.title} placeholder="제목을 입력하세요" value={crePost.title} onChange={handleChangePost}/>

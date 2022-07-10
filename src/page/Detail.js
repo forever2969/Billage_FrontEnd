@@ -10,7 +10,7 @@ import Reply from './../component/Reply';
 function Detail() {
     const params = useParams();
     const person = getFrontEndPeple(parseInt(params.productId));
-
+    console.log(person);
     return (
         <>
             <div style={{textAlign:'center', width:'80%' , border:"2px blue solid" , margin:"auto"}}>

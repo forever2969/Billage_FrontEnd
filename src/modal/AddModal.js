@@ -8,7 +8,7 @@ const AddModal = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+    
     return(
     <>
         <img src="plusButton.png" onClick={handleShow} style={{cursor:"pointer" , width:"5%", position:'fixed', top: '83%', left: '85%',transform: 'translate(-50%, -50%)'}}/>

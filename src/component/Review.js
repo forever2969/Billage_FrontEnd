@@ -1,9 +1,20 @@
 import React from 'react';
+import { getFrontEndInfo } from '../data/FrontEndInfo';
+import '../style/Review.css';
 
 const Review = () => {
+    const frontEndInfo = getFrontEndInfo();
+
     return (
         <div>
-            리뷰쓰는자리
+            <p>받은 리뷰</p>
+            {
+            frontEndInfo.map((info)=>
+                <div className="reviewDataDiv">
+                    <span className="reviewData">{info.detail}</span>
+                </div>
+            )
+            }
         </div>
     );
 };

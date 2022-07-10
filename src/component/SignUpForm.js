@@ -1,4 +1,5 @@
 import { useRef , useState } from 'react';
+import { useNavigate} from 'react-router-dom';
 
 const SignUpForm = () => {
     const mailInput = useRef();
@@ -7,6 +8,7 @@ const SignUpForm = () => {
     const phoneInput = useRef();
     const nameInput = useRef();
     let mailPush = '';
+    const navigate = useNavigate();
 
     const [signUpData,setSignUpData] = useState({
         mail:"",
@@ -30,6 +32,12 @@ const SignUpForm = () => {
         e.preventDefault();
         
         console.log(signUpData);
+        if (signUpData.pw === signUpData.confirmPw){
+            alert('회원가입이 완료되었습니다.');
+            navigate('/login',{replace:true});
+        }else{
+            alert('비밀번호가 일치하지 않습니다.');
+        }
     }
 
     return (

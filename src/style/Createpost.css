@@ -1,20 +1,22 @@
-.createpost
-{
-    border: 1px solid gray;
-    text-align: center;
-    padding: 20px;
+.createpost {
+  border: 1px solid gray;
+  text-align: center;
+  padding: 20px;
 }
 
-.createpost input, textarea
-{
-    margin-bottom: 20px;
-    width: 500px;
-    padding: 10px;
+.createpost input,
+textarea {
+  margin-bottom: 20px;
+  width: 500px;
+  padding: 10px;
 }
 
-.createpost button
-{
-    width:500px;
-    padding:10px;
-    cursor:pointer;
+.createpost button {
+  width: 500px;
+  padding: 10px;
+  cursor: pointer;
+}
+.previewImgs {
+  width: 500px;
+  margin: 2% auto;
 }

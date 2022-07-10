@@ -30,7 +30,7 @@ const Header = () => {
     return (
         <div id="HeaderDiv">
             <Logo margin="1%" width="10%" />
-            <Slogan size="60%" />
+            <Slogan size="80%" />
             <form onSubmit={searchClick} style={{width:"50%"}}>
                 <input id="searchBar" value={searchData} type="text" onChange={onChageSearch} placeholder="찾는 물건을 입력하세요" />
                 <button type="submit" id="searchBtn" className="btn btn-primary">검색</button>
