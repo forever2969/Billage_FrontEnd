@@ -1,0 +1,34 @@
+.modal-container
+{
+    width:13%;
+    height:30%;
+    position: fixed;
+    top: 72%;
+    left: 82%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-text
+{
+    font-weight: bolder;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px 0 10px 0;
+    background: rgba(102, 103, 171, 0.4);
+    text-decoration: none;
+}
+
+.modal-text:hover
+{
+    background-color:#6667AB;
+    text-decoration: none;
+
+}
+
+body {
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+} 

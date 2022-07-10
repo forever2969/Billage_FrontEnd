@@ -5,6 +5,7 @@ import Header from './../component/Header';
 import { useParams } from 'react-router-dom';
 import { getFrontEndPeple } from '../data/FrontEndInfo';
 import Myinfo from '../component/Myinfo';
+import Reply from './../component/Reply';
 
 function Detail() {
     const params = useParams();
@@ -31,6 +32,9 @@ function Detail() {
                             <p style={{fontSize:'18px'}}>{person.detail}</p>
                         </div>
                     </h4>
+                    <div style={{border:'2px solid orange'}}>
+                        <Reply />
+                    </div>
                     <Post />
                 </div>
             </div>

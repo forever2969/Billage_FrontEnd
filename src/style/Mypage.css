@@ -1,0 +1,18 @@
+#mypageNumber {
+  margin: 5%;
+  padding-bottom: 5%;
+  border-bottom: 1px solid black;
+  border-radius: 20px;
+  width: 100%;
+}
+#mypagePost {
+  border-bottom: 1px solid black;
+  border-radius: 20px;
+  padding-bottom: 5%;
+}
+#mypageReview {
+  margin: 5%;
+  padding-bottom: 5%;
+  border-bottom: 1px solid black;
+  border-radius: 20px;
+}

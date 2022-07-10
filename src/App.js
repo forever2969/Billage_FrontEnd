@@ -6,8 +6,10 @@ import Main from './page/Main';
 import Mypage from './page/Mypage';
 import Signup from './page/Signup';
 import Footer from './component/Footer';
-import Serach from './page/Serach';
+import Search from './page/Search';
+import Createpost from './page/Createpost';
 import './App.css';
+
 function App() {
 
   return (
@@ -18,7 +20,8 @@ function App() {
         <Route path="/Mypage" element={<Mypage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/search" element={<Serach />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/write" element={<Createpost />} />
       </Routes>
       <Footer />
     </>

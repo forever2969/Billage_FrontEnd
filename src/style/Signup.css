@@ -1,0 +1,8 @@
+#signupDiv {
+  display: flex;
+  margin: 10%;
+  justify-content: space-evenly;
+}
+#signupLogo {
+  margin: 5%;
+}
