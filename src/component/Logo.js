@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../style/Logo.css';
 
 const Logo = ({margin,width}) => {
     const navigate = useNavigate();
@@ -8,7 +9,7 @@ const Logo = ({margin,width}) => {
     }
     return (
         <>
-            <img onClick={logoClick} src='/Logo.png' alt='이미지가 없습니다' style={{width:width, margin:margin,cursor:"pointer"}} />
+            <img id="LogoImg" onClick={logoClick} src='/Logo.png' alt='이미지가 없습니다' style={{width:width, margin:margin,cursor:"pointer"}} />
         </>
     );
 };

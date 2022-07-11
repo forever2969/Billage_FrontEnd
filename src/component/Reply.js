@@ -3,27 +3,13 @@ import Template from './Template';
 import CommentInput from './commentInput';
 import Comment from './Comment';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 function Reply() {
-  const [detailComments,setDetailComments] = useState([]);
-  const [totalComments,setTotalComments] = useState([]);
-  const location = useLocation();
-  useEffect(()=>{
-    async function getCommentsList(){
-      const resultData = await axios.get('/comments_list/').then((res)=>{return res.data});
-      setTotalComments(resultData);
-      const filterData = await totalComments.filter((comment)=>{
-        return (comment.board_id === location.detail);
-      });
-      setDetailComments(filterData);
-    }
-  },[]);
-
-  
-  
-  const [comments, setComments] = useState([{}]);
-
+  const [comments, setComments] = useState([
+    { id: 1, name: 'KIT BILLAGE TEAM', content: 'WELCOME!!', }
+  ]);
+  const params = useParams();
   const nextId = useRef(1);
 
   const onInsert = useCallback(
@@ -33,15 +19,37 @@ function Reply() {
         name,
         content
       };
-      console.log(name);
-      console.log(content);
+      axios({
+        url:'/board_comments/',
+        method:'post',
+        data:{
+            board_id:parseInt(params.productId),
+            content:comment.content,
+            writer:17,
+            comment_id:comment.id,
+        },
+        headers:{
+            'ContentType':'application/json'
+        }
+    }).then((res)=>{
+        console.log(res);
+    }).catch((e)=>console.log(e))
       setComments(comments => comments.concat(comment));
       nextId.current += 1; //nextId 1씩 더하기
     },
     [comments],
   );
-
-
+  useEffect(()=>{
+    axios.get('/comments_list/')
+    .then((res)=>{
+      setComments(res.data.results);
+    })
+  },[nextId])
+  console.log(comments);
+  const filterComment = comments.filter((com)=>{
+    return (com.board_id === parseInt(params.productId));
+  });
+  
   return (
     <div>
       <Template>
@@ -49,11 +57,11 @@ function Reply() {
         <CommentInput onInsert={onInsert} />
       </Template>
       <div style={{ marginBottom: "4rem" }}>
-        {detailComments.map((comment) => {
+        {filterComment.map((comment) => {
           return (
             <Comment
               key={comment.id}
-              id={comment.id} 
+              id={comment.id}
               name={comment.name}
               content={comment.content}
             />
