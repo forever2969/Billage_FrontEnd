@@ -1,14 +1,28 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback,useEffect } from 'react';
 import Template from './Template';
 import CommentInput from './commentInput';
 import Comment from './Comment';
-
+import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 function Reply() {
+  const [detailComments,setDetailComments] = useState([]);
+  const [totalComments,setTotalComments] = useState([]);
+  const location = useLocation();
+  useEffect(()=>{
+    async function getCommentsList(){
+      const resultData = await axios.get('/comments_list/').then((res)=>{return res.data});
+      setTotalComments(resultData);
+      const filterData = await totalComments.filter((comment)=>{
+        return (comment.board_id === location.detail);
+      });
+      setDetailComments(filterData);
+    }
+  },[]);
 
-  const [comments, setComments] = useState([
-    { id: 1, name: 'KIT BILLAGE TEAM', content: 'WELCOME!!', }
-  ]);
+  
+  
+  const [comments, setComments] = useState([{}]);
 
   const nextId = useRef(1);
 
@@ -35,11 +49,11 @@ function Reply() {
         <CommentInput onInsert={onInsert} />
       </Template>
       <div style={{ marginBottom: "4rem" }}>
-        {comments.map((comment) => {
+        {detailComments.map((comment) => {
           return (
             <Comment
               key={comment.id}
-              id={comment.id}
+              id={comment.id} 
               name={comment.name}
               content={comment.content}
             />

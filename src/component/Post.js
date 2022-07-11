@@ -1,9 +1,10 @@
 import React from 'react';
 import Block from '../component/Block';
-import { getFrontEndInfo } from '../data/FrontEndInfo';
 
-const Post = () => {
-    let frontEndInfo = getFrontEndInfo();
+const Post = (props) => {
+
+    console.log(typeof props);
+    console.log(props);
 
     return (
         <>
@@ -12,8 +13,8 @@ const Post = () => {
                 <div className='row'>
                     {
                         // id값을 받아와서 이동하기 위함
-                        frontEndInfo.map((element)=>(
-                                <Block frontEndInfo={element} key={element.id} i={element.id}/>
+                        props.totalPost.map((element)=>(
+                                <Block totalPost={element} key={element.id} i={element.id}/>
                         ))
                     }
                 </div>

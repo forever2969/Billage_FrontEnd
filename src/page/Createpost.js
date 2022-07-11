@@ -8,6 +8,7 @@ const Createpost = () => {
     const contentsInput = useRef();
     const [detailImgs,setDetailImgs] = useState('');
 
+
     const [crePost,setCrePost] = useState({
         photo:"",
         title:"",

@@ -4,6 +4,7 @@ import Slogan from './Slogan.js';
 import '../style/Header.css';
 import {getFrontEndInfo} from '../data/FrontEndInfo';
 import { useNavigate,useSearchParams,useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 const Header = () => {
     const [searchData, setSearchData] = useState("");
@@ -11,10 +12,19 @@ const Header = () => {
     const [searchParams,setSearchParams] = useSearchParams();
     const search = (searchParams.get("searchData"));
     const location = useLocation();
-    
+    const [totalPost,setTotalPost] = useState([]);
+
     useEffect(() => {
-        console.log(location);
-      }, [ location ])
+        console.log(location.search);
+    }, [ location ])
+
+    useEffect(()=>{
+        axios.get('/board/')
+        .then((res)=>{
+            setTotalPost(res.data);
+        })
+    },[]);
+
 
     const navigate = useNavigate();
     const onChageSearch = (e)=>{
@@ -24,6 +34,8 @@ const Header = () => {
     const searchClick = (e)=>{
         e.preventDefault();
         navigate(`/search/?search=${searchData}`);
+        console.log("test");
+        window.location.reload();
         setSearchData('');
     };
 

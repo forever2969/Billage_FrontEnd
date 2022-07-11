@@ -1,11 +1,21 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import Header from '../component/Header';
 import { Outlet } from 'react-router-dom';
 import Post from '../component/Post';
 import AddModal from '../modal/AddModal';
 import AlramModal from '../modal/AlramModal';
+import axios from 'axios';
 
 function Main() {
+    const [totalPost,setTotalPost] = useState([]);
+    useEffect(()=>{
+        axios.get('/board/')
+        .then(res=>{
+            setTotalPost(res.data);
+        })
+        .catch(e=>console.log(e))
+    },[]);
+    
     return (
         <>
             <div style={{textAlign:'center', width:'80%' , border:"2px blue solid" , margin:"auto"}}>
@@ -19,7 +29,7 @@ function Main() {
                     
                     <Outlet/>
                     {/* 게시글 컴포넌트 */}
-                    <Post />
+                    <Post totalPost={totalPost} />
                     <AddModal />
                     <AlramModal value={true} />
                 </div>
