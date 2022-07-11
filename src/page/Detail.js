@@ -24,7 +24,7 @@ function Detail() {
 
     useEffect(()=>{
         getTotalPost();
-    },[])
+    },[params.productId])
     console.log(totalPost);
     return (
         <>

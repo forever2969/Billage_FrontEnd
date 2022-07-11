@@ -13,16 +13,16 @@ const Mypage = () => {
     const [totalPost,setTotalPost] = useState([]);
 
     async function getTotalPost(){
-        await axios.get('/board/').then((res)=>{setTotalPost(res.data)});
-        
-        const filterResultData = totalPost.filter((post)=>{
-            return (parseInt(post.writer)===parseInt(params.userId));
-        });
-        setUserPost(filterResultData);
+        const resultTotalPost = await axios.get('/board/').then((res)=>{return res.data});
+        setTotalPost(totalPost);
+        const resultMyPost = resultTotalPost.filter((ele)=>{ return ele.writer === parseInt(params.userId)});
+        setUserPost(resultMyPost);
     };
+
     useEffect(()=>{
         getTotalPost();
-    });
+    },[params.userId]);
+
     return (
         <div>
             <Header />
